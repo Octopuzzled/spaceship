@@ -1,20 +1,38 @@
-# Raumschiff-Aufgabe
+# Spaceship Control
 
-## Aufgaben
+A small browser game about the spaceship **Potatoqueen**.
 
-1. **Leeres Projekt in VS Code erstellen**
-   - Dateien `index.html` und `script.js` anlegen
-   - `script.js` im HTML verlinken
-2. **Repository auf GitHub erstellen** und mit dem Projekt verknüpfen
-3. **Variablen anlegen:** sinnvolle Namen für die folgenden Werte überlegen und im Script ergänzen
-   - Name des Raumschiffs
-   - Panzerung/Leben des Raumschiffs (nur eine Variable!)
-   - Währung
-   - Reparatursets für das Raumschiff
-4. **Funktionen umsetzen**
-   - Status des Raumschiffs anzeigen
-   - Reparaturset benutzen
-   - Reparaturset kaufen
-   - Schaden nehmen
+This is a practice project from my retraining (*Umschulung*) at the **Developer Akademie**. It grows alongside the course, so it is a learning project and not a finished product.
 
-> **Hinweis:** Leben, Preise, Schadenshöhe usw. sind frei wählbar.
+![Spaceship Control screenshot](assets/img/example.png)
+
+## What it does
+
+- Buy repairkits and shields with your currency
+- Use a repairkit to restore life, or a shield to halve the damage of the next hit
+- Take hits of any size and watch the life bar drain
+- Game over when life reaches 0, then start again
+
+## Built with
+
+- HTML
+- CSS (BEM naming, custom properties)
+- Vanilla JavaScript, no frameworks
+
+## Project structure
+
+```
+spaceship/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   ├── game.js          # game state, messages, restart, game over
+│   └── ship-logic.js    # shop, inventory, hits, life bar
+└── assets/
+    └── img/             # ship, icons, background, screenshot
+```
+
+## Run it
+
+No build step needed. Open `index.html` in a browser, or use a local server such as the VS Code *Live Server* extension.
