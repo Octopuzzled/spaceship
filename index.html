@@ -50,23 +50,31 @@
 
                 <div class="nav__group">
                     <h2 class="nav__heading">Repairshop</h2>
-                    <label class="field__label" for="nav-repairkit-input"></label>
-                    <input class="field__input field__input--buy" type="number" id="nav-repairkit-input" min="1" value="1">
-                    <button
-                        class="btn btn--buy"
-                        id="buy-repairkit-button"
-                        type="button"
-                        onclick="buy_repairkit()"
-                    >
-                        <img
-                            class="btn__icon"
-                            src="assets/img/icon-buy.svg"
-                            alt=""
-                            width="28"
-                            height="28"
+                    <div class="field-row">
+                        <input
+                            class="field__input field__input--buy"
+                            type="number"
+                            id="nav-repairkit-input"
+                            min="1"
+                            value="1"
+                            aria-label="Amount"
                         />
-                        Buy repairkits
-                    </button>
+                        <button
+                            class="btn btn--buy"
+                            id="buy-repairkit-button"
+                            type="button"
+                            onclick="buy_repairkit()"
+                        >
+                            <img
+                                class="btn__icon"
+                                src="assets/img/icon-buy.svg"
+                                alt=""
+                                width="28"
+                                height="28"
+                            />
+                            Buy repairkits
+                        </button>
+                    </div>
                     <button
                         class="btn btn--repair"
                         id="repair-repairkit-button"
@@ -82,8 +90,15 @@
                         />
                         Use a repairkit
                     </button>
-                    <label class="field__label" for="nav-shield-input"></label>
-                    <input class="field__input field__input--buy" type="number" id="nav-shield-input" min="1" value="1">
+                    <div class="field-row">
+                    <input
+                        class="field__input field__input--buy"
+                        type="number"
+                        id="nav-shield-input"
+                        min="1"
+                        value="1"
+                        aria-label="Amount"
+                    />
                     <button
                         class="btn btn--buy"
                         id="buy-shield-button"
@@ -99,6 +114,7 @@
                         />
                         Buy shields
                     </button>
+                    </div>
                     <button
                         class="btn btn--repair"
                         id="repair-shield-button"
@@ -118,8 +134,17 @@
 
                 <div class="nav__group nav__group--danger">
                     <h2 class="nav__heading">Danger zone</h2>
-                    <label class="field__label" for="nav-hitpoint-input"></label>
-                    <input class="field__input field__input--hit" type="number" name="" id="nav-hitpoint-input" min="1" value="10"/>
+
+                    <div class="field-row">
+                    <input
+                        class="field__input field__input--hit"
+                        type="number"
+                        name=""
+                        id="nav-hitpoint-input"
+                        min="1"
+                        value="10"
+                        aria-label="Amount"
+                    />
                     <button
                         class="btn btn--hit"
                         id="hit-button"
@@ -135,6 +160,7 @@
                         />
                         Get hit
                     </button>
+                    </div>
                 </div>
             </nav>
 
@@ -155,6 +181,20 @@
                         width="400"
                         height="260"
                     />
+                </div>
+
+                <div class="life" id="life">
+                    <img
+                        class="life__icon"
+                        src="assets/img/icon-life.svg"
+                        alt=""
+                        width="24"
+                        height="24"
+                    />
+                    <div class="life__bar">
+                        <div class="life__fill"></div>
+                    </div>
+                    <span class="life__value" id="life-value">100</span>
                 </div>
 
                 <!-- Messages / Effects -->
