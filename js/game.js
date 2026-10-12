@@ -19,9 +19,11 @@ function restart() {
     reparekit_effect = 20;
     repairkit_price = 35;
     standard_hit = 30;
-    
+
     inventory = [];
     document.getElementById("inventory-list").innerHTML = "";
+
+    showLife();
 
     document.getElementById("ship-image").src = "assets/img/ship.svg";
 

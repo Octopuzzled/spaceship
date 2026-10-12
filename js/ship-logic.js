@@ -42,8 +42,8 @@ function renderStatus() {
 
 function showInventory() {
     const ul = document.getElementById("inventory-list");
-    list = [];
-    for (i = 0; i < inventory.length; i++) {
+    let list = "";
+    for (let i = 0; i < inventory.length; i++) {
         list += `<li>${inventory[i]}</li>`;
     }
     ul.innerHTML = list;
@@ -51,7 +51,7 @@ function showInventory() {
 
 function buy_repairkit() {
     let amount = Number(document.getElementById("nav-repairkit-input").value);
-    if (currency >= shield_price * amount) {
+    if (currency >= repairkit_price * amount) {
         for (let i = 0; i < amount; i++) {
             inventory.push("repairkit");
         }
@@ -88,6 +88,7 @@ function use_repairkit() {
         life += reparekit_effect;
         removeFromList(inventory, "repairkit");
         showInventory();
+        showLife();
         status_message(`You used a repairkit.`);
     } else {
         error_message(
@@ -99,7 +100,8 @@ function use_repairkit() {
 function use_shield() {
     if (inventory.includes("shield")) {
         shielded = true;
-        document.getElementById("ship-image").src = "assets/img/ship-shielded.svg"; 
+        document.getElementById("ship-image").src =
+            "assets/img/ship-shielded.svg";
         removeFromList(inventory, "shield");
         showInventory();
         status_message(`You used a shield.`);
@@ -115,13 +117,29 @@ function getting_hit() {
         life -= hitpoints * 0.5;
         status_message(`You were hit and lost ${hitpoints * 0.5} armor.`);
         shielded = false;
-        document.getElementById("ship-image").src = "assets/img/ship.svg"; 
+        document.getElementById("ship-image").src = "assets/img/ship.svg";
     } else {
         life -= hitpoints;
         status_message(`You were hit and lost ${hitpoints} armor.`);
     }
+    showLife();
     if (life <= 0) {
-        document.getElementById("ship-image").src = "assets/img/ship-destroyed.svg";
+        document.getElementById("ship-image").src =
+            "assets/img/ship-destroyed.svg";
         gameOver(`Game Over.`);
     }
+}
+
+function showLife() {
+    const percent = Math.max(0, Math.min(100, Math.round(life)));
+    const step = Math.round(percent / 10) * 10; // 0, 10, 20 ... 100
+    const lifeElement = document.getElementById("life");
+
+    for (let i = 0; i < 100; i++) {
+        lifeElement.classList.remove("life--" + i);
+    }
+
+    lifeElement.classList.add("life--" + step);
+    lifeElement.classList.toggle("life--low", percent <= 30);
+    document.getElementById("life-value").textContent = percent;
 }
