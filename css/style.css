@@ -35,7 +35,7 @@ body {
     line-height: 24px;
 }
 
-/* ===== Layout: Navigation links, Anzeige rechts ===== */
+/* ===== Layout: Navigation links ===== */
 .layout {
     display: grid;
     grid-template-columns: var(--nav-width) 1fr;
@@ -100,7 +100,51 @@ body {
     text-transform: uppercase;
 }
 
-/* Gefahrenzone rutscht ans untere Ende der Navigation */
+/* ===== Inventory ===== */
+.nav__inventory {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 180px;
+    padding: 0;
+    overflow-y: auto;
+    list-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+
+.nav__inventory li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 20px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.nav__inventory li:hover {
+    background: rgba(167, 123, 255, 0.12);
+    border-left-color: var(--info);
+}
+
+/* Nothing in inventory */
+.nav__inventory:empty::before {
+    content: "Empty";
+    padding: 8px 12px;
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* Danger zone, displayed at the bottom */
 .nav__group--danger {
     margin-top: auto;
     padding-top: 20px;
@@ -138,14 +182,13 @@ body {
 
 .btn--restart { --c: var(--accent); }
 
-/* ausgegraut (Game Over) */
+/* disabled (Game Over) */
 .btn:disabled {
     opacity: 0.35;
     filter: grayscale(1);
     cursor: not-allowed;
 }
 
-/* display:flex von .btn würde das hidden-Attribut sonst überstimmen */
 .btn[hidden] {
     display: none;
 }
@@ -213,7 +256,7 @@ body {
 .field__input--hit    { --c: var(--danger); }
 .field__input--repair { --c: var(--repair); }
 
-/* ===== Anzeige rechts ===== */
+/* ===== Ship section (stage) ===== */
 .stage {
     display: flex;
     flex-direction: column;
@@ -245,7 +288,7 @@ body {
     animation: float 4s ease-in-out infinite;
 }
 
-/* ===== Werte-Anzeige ===== */
+/* ===== Show values ===== */
 .stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -302,6 +345,7 @@ body {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 24px rgba(74, 222, 128, 0.12);
+    flex: 1;
 }
 
 .terminal__bar {
@@ -375,7 +419,7 @@ body {
     font-size: 20px;
 }
 
-/* blinkender Cursor am Ende der Ausgabe */
+/* Blinking cursor */
 .terminal__output::after {
     content: "> _";
     animation: blink 1s steps(1) infinite;
@@ -390,7 +434,7 @@ body {
 .terminal__line--warning { color: var(--buy); }
 .terminal__line--error   { color: var(--danger); }
 
-/* ===== Animationen ===== */
+/* ===== Animations ===== */
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50%      { transform: translateY(-12px); }
@@ -407,7 +451,7 @@ body {
     75%      { transform: translateX(4px); }
 }
 
-/* ===== Tablet / Mobil: Navigation rutscht nach oben ===== */
+/* ===== Tablet / Mobile ===== */
 @media (max-width: 800px) {
     .layout {
         grid-template-columns: 1fr;

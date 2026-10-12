@@ -8,10 +8,10 @@
     </head>
     <body>
         <div class="layout">
-            <!-- ===== Navigation links: alle Buttons ===== -->
+            <!-- ===== Navigation links: all Buttons ===== -->
             <nav class="nav" aria-label="Schiffssteuerung">
                 <div class="nav__brand">
-                    <p class="nav__tag">Bordsystem online</p>
+                    <p class="nav__tag">Boardsystem online</p>
                     <h1 class="nav__title">Spaceship<br />Control</h1>
                 </div>
                 <button
@@ -21,7 +21,7 @@
                     onclick="restart()"
                     hidden
                 >
-                    Neu starten
+                    Start again
                 </button>
 
                 <div class="nav__group">
@@ -44,12 +44,17 @@
                 </div>
 
                 <div class="nav__group">
-                    <h2 class="nav__heading">Werkstatt</h2>
+                    <h2 class="nav__heading">Inventory</h2>
+                    <ul id="inventory-list" class="nav__inventory"></ul>
+                </div>
+
+                <div class="nav__group">
+                    <h2 class="nav__heading">Repairshop</h2>
                     <label class="field__label" for="nav-repairkit-input"></label>
                     <input class="field__input field__input--buy" type="number" id="nav-repairkit-input" min="1" value="1">
                     <button
                         class="btn btn--buy"
-                        id="buy-button"
+                        id="buy-repairkit-button"
                         type="button"
                         onclick="buy_repairkit()"
                     >
@@ -64,7 +69,7 @@
                     </button>
                     <button
                         class="btn btn--repair"
-                        id="repair-button"
+                        id="repair-repairkit-button"
                         type="button"
                         onclick="use_repairkit()"
                     >
@@ -77,10 +82,42 @@
                         />
                         Use a repairkit
                     </button>
+                    <label class="field__label" for="nav-shield-input"></label>
+                    <input class="field__input field__input--buy" type="number" id="nav-shield-input" min="1" value="1">
+                    <button
+                        class="btn btn--buy"
+                        id="buy-shield-button"
+                        type="button"
+                        onclick="buy_shield()"
+                    >
+                        <img
+                            class="btn__icon"
+                            src="assets/img/icon-buy.svg"
+                            alt=""
+                            width="28"
+                            height="28"
+                        />
+                        Buy shields
+                    </button>
+                    <button
+                        class="btn btn--repair"
+                        id="repair-shield-button"
+                        type="button"
+                        onclick="use_shield()"
+                    >
+                        <img
+                            class="btn__icon"
+                            src="assets/img/icon-repair.svg"
+                            alt=""
+                            width="28"
+                            height="28"
+                        />
+                        Use a shield
+                    </button>
                 </div>
 
                 <div class="nav__group nav__group--danger">
-                    <h2 class="nav__heading">Gefahrenzone</h2>
+                    <h2 class="nav__heading">Danger zone</h2>
                     <label class="field__label" for="nav-hitpoint-input"></label>
                     <input class="field__input field__input--hit" type="number" name="" id="nav-hitpoint-input" min="1" value="10"/>
                     <button
@@ -101,11 +138,11 @@
                 </div>
             </nav>
 
-            <!-- ===== Anzeige rechts: Effekte ===== -->
+            <!-- ===== Ship section ===== -->
             <main class="stage">
                 <header class="stage__header">
                     <p class="stage__subtitle">
-                        Manuver the Potatoqueen using the buttons on the left.
+                        Manuver the Potatoqueen using the buttons.
                     </p>
                 </header>
 
@@ -120,7 +157,7 @@
                     />
                 </div>
 
-                <!-- Meldungen / Effekte -->
+                <!-- Messages / Effects -->
                 <section class="terminal" aria-label="Bordterminal">
                     <div class="terminal__bar">
                         <span class="terminal__dot terminal__dot--red"></span>
@@ -128,7 +165,7 @@
                             class="terminal__dot terminal__dot--yellow"
                         ></span>
                         <span class="terminal__dot terminal__dot--green"></span>
-                        <span class="terminal__title">potatoqueen@bord:~</span>
+                        <span class="terminal__title">potatoqueen@board:~</span>
                         <button
                             class="terminal__clear"
                             type="button"
@@ -147,7 +184,7 @@
             </main>
         </div>
 
-        <script src="js/terminal.js"></script>
-        <script src="js/script.js"></script>
+        <script src="./js/game.js"></script>
+        <script src="./js/ship-logic.js"></script>
     </body>
 </html>
