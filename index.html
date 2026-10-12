@@ -1,13 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Spaceship Control</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <div class="layout">
+            <!-- ===== Navigation links: alle Buttons ===== -->
+            <nav class="nav" aria-label="Schiffssteuerung">
+                <div class="nav__brand">
+                    <p class="nav__tag">Bordsystem online</p>
+                    <h1 class="nav__title">Spaceship<br />Control</h1>
+                </div>
+                <button
+                    class="btn btn--restart"
+                    id="restart-button"
+                    type="button"
+                    onclick="restart()"
+                    hidden
+                >
+                    Neu starten
+                </button>
 
-    <script defer src="./scripts.js"></script>
-</head>
-<body>
-    
-</body>
+                <div class="nav__group">
+                    <h2 class="nav__heading">Ship status</h2>
+                    <button
+                        class="btn btn--info"
+                        id="status-button"
+                        type="button"
+                        onclick="renderStatus()"
+                    >
+                        <img
+                            class="btn__icon"
+                            src="assets/img/icon-status.svg"
+                            alt=""
+                            width="28"
+                            height="28"
+                        />
+                        Get ship status
+                    </button>
+                </div>
+
+                <div class="nav__group">
+                    <h2 class="nav__heading">Werkstatt</h2>
+                    <label class="field__label" for="nav-repairkit-input"></label>
+                    <input class="field__input field__input--buy" type="number" id="nav-repairkit-input" min="1" value="1">
+                    <button
+                        class="btn btn--buy"
+                        id="buy-button"
+                        type="button"
+                        onclick="buy_repairkit()"
+                    >
+                        <img
+                            class="btn__icon"
+                            src="assets/img/icon-buy.svg"
+                            alt=""
+                            width="28"
+                            height="28"
+                        />
+                        Buy repairkits
+                    </button>
+                    <button
+                        class="btn btn--repair"
+                        id="repair-button"
+                        type="button"
+                        onclick="use_repairkit()"
+                    >
+                        <img
+                            class="btn__icon"
+                            src="assets/img/icon-repair.svg"
+                            alt=""
+                            width="28"
+                            height="28"
+                        />
+                        Use a repairkit
+                    </button>
+                </div>
+
+                <div class="nav__group nav__group--danger">
+                    <h2 class="nav__heading">Gefahrenzone</h2>
+                    <label class="field__label" for="nav-hitpoint-input"></label>
+                    <input class="field__input field__input--hit" type="number" name="" id="nav-hitpoint-input" min="1" value="10"/>
+                    <button
+                        class="btn btn--hit"
+                        id="hit-button"
+                        type="button"
+                        onclick="getting_hit()"
+                    >
+                        <img
+                            class="btn__icon"
+                            src="assets/img/icon-hit.svg"
+                            alt=""
+                            width="28"
+                            height="28"
+                        />
+                        Get hit
+                    </button>
+                </div>
+            </nav>
+
+            <!-- ===== Anzeige rechts: Effekte ===== -->
+            <main class="stage">
+                <header class="stage__header">
+                    <p class="stage__subtitle">
+                        Manuver the Potatoqueen using the buttons on the left.
+                    </p>
+                </header>
+
+                <div class="stage__ship">
+                    <img
+                        class="stage__ship-img"
+                        id="ship-image"
+                        src="assets/img/ship.svg"
+                        alt="Die Potatoqueen, ein Raumschiff in Kartoffelform mit Krone"
+                        width="400"
+                        height="260"
+                    />
+                </div>
+
+                <!-- Meldungen / Effekte -->
+                <section class="terminal" aria-label="Bordterminal">
+                    <div class="terminal__bar">
+                        <span class="terminal__dot terminal__dot--red"></span>
+                        <span
+                            class="terminal__dot terminal__dot--yellow"
+                        ></span>
+                        <span class="terminal__dot terminal__dot--green"></span>
+                        <span class="terminal__title">potatoqueen@bord:~</span>
+                        <button
+                            class="terminal__clear"
+                            type="button"
+                            onclick="terminalClear()"
+                        >
+                            clear
+                        </button>
+                    </div>
+                    <div
+                        class="terminal__output"
+                        id="terminal-output"
+                        role="log"
+                        aria-live="polite"
+                    ></div>
+                </section>
+            </main>
+        </div>
+
+        <script src="js/terminal.js"></script>
+        <script src="js/script.js"></script>
+    </body>
 </html>

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260">
+    <defs>
+        <linearGradient id="potato" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#f0cf8a"/>
+            <stop offset="1" stop-color="#b8843f"/>
+        </linearGradient>
+        <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#a77bff"/>
+            <stop offset="1" stop-color="#4a2a9e"/>
+        </linearGradient>
+        <radialGradient id="glass" cx="0.35" cy="0.3" r="0.8">
+            <stop offset="0" stop-color="#c9f4ff"/>
+            <stop offset="1" stop-color="#2a8fb8"/>
+        </radialGradient>
+        <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffe27a"/>
+            <stop offset="1" stop-color="#d49a1a"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Flamme -->
+    <g>
+        <polygon fill="#ff7a2f" points="95,140 40,120 62,140 40,160">
+            <animate attributeName="points"
+                     values="95,140 40,120 62,140 40,160;95,140 22,126 56,140 22,154;95,140 40,120 62,140 40,160"
+                     dur="0.3s" repeatCount="indefinite"/>
+        </polygon>
+        <polygon fill="#ffd23f" points="95,140 62,130 76,140 62,150">
+            <animate attributeName="points"
+                     values="95,140 62,130 76,140 62,150;95,140 52,134 72,140 52,146;95,140 62,130 76,140 62,150"
+                     dur="0.3s" repeatCount="indefinite"/>
+        </polygon>
+    </g>
+
+    <!-- Flügel -->
+    <path d="M170 95 L120 30 L215 78 Z" fill="url(#wing)" stroke="#2a1560" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M170 185 L120 250 L215 202 Z" fill="url(#wing)" stroke="#2a1560" stroke-width="3" stroke-linejoin="round"/>
+
+    <!-- Kartoffel-Rumpf -->
+    <g transform="rotate(-6 210 140)">
+        <path d="M100 150 C90 100 140 68 215 70 C300 70 335 105 325 148 C318 190 270 215 205 212 C140 210 108 190 100 150 Z"
+              fill="url(#potato)" stroke="#6b4518" stroke-width="4"/>
+        <ellipse cx="150" cy="115" rx="9" ry="6" fill="#8a5a22" opacity="0.6"/>
+        <ellipse cx="185" cy="178" rx="11" ry="7" fill="#8a5a22" opacity="0.6"/>
+        <ellipse cx="290" cy="185" rx="8" ry="5" fill="#8a5a22" opacity="0.6"/>
+        <ellipse cx="135" cy="155" rx="6" ry="4" fill="#8a5a22" opacity="0.6"/>
+        <ellipse cx="225" cy="100" rx="7" ry="4" fill="#8a5a22" opacity="0.5"/>
+    </g>
+
+    <!-- Fenster -->
+    <circle cx="250" cy="138" r="32" fill="#2b2250" stroke="#6b4518" stroke-width="4"/>
+    <circle cx="250" cy="138" r="25" fill="url(#glass)"/>
+    <ellipse cx="241" cy="129" rx="7" ry="4" fill="#ffffff" opacity="0.7" transform="rotate(-30 241 129)"/>
+
+    <!-- Krone -->
+    <polygon points="190,76 190,44 206,60 222,36 238,60 254,44 254,80"
+             fill="url(#gold)" stroke="#8a5f08" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="190" cy="44" r="5" fill="#ff4d6d"/>
+    <circle cx="222" cy="36" r="5" fill="#4cc9f0"/>
+    <circle cx="254" cy="44" r="5" fill="#ff4d6d"/>
+</svg>
