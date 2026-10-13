@@ -49,7 +49,7 @@ function showInventory() {
     ul.innerHTML = list;
 }
 
-function buy_repairkit() {
+function buyRepairkit() {
     let amount = Number(document.getElementById("nav-repairkit-input").value);
     if (currency >= repairkit_price * amount) {
         for (let i = 0; i < amount; i++) {
@@ -58,15 +58,15 @@ function buy_repairkit() {
         currency -= repairkit_price * amount;
         showInventory();
 
-        status_message(`You bought ${amount} repairkits.`);
+        statusMessage(`You bought ${amount} repairkits.`);
     } else {
-        error_message(
+        errorMessage(
             `You don't have enough currency to buy ${amount} repairkits.`,
         );
     }
 }
 
-function buy_shield() {
+function buyShield() {
     let amount = Number(document.getElementById("nav-shield-input").value);
     if (currency >= shield_price * amount) {
         for (let i = 0; i < amount; i++) {
@@ -75,52 +75,52 @@ function buy_shield() {
         currency -= shield_price * amount;
         showInventory();
 
-        status_message(`You bought ${amount} shields.`);
+        statusMessage(`You bought ${amount} shields.`);
     } else {
-        error_message(
+        errorMessage(
             `You don't have enough currency to buy ${amount} shields.`,
         );
     }
 }
 
-function use_repairkit() {
+function useRepairkit() {
     if (life <= 100 - reparekit_effect && inventory.includes("repairkit")) {
         life += reparekit_effect;
         removeFromList(inventory, "repairkit");
         showInventory();
         showLife();
-        status_message(`You used a repairkit.`);
+        statusMessage(`You used a repairkit.`);
     } else {
-        error_message(
+        errorMessage(
             `Your life is high enough or you don't have enough money. No need to use a repairkit.`,
         );
     }
 }
 
-function use_shield() {
+function useShield() {
     if (inventory.includes("shield")) {
         shielded = true;
         document.getElementById("ship-image").src =
             "assets/img/ship-shielded.svg";
         removeFromList(inventory, "shield");
         showInventory();
-        status_message(`You used a shield.`);
+        statusMessage(`You used a shield.`);
     } else {
-        error_message(`You don't have a shield yet.`);
+        errorMessage(`You don't have a shield yet.`);
     }
 }
 
-function getting_hit() {
+function gettingHit() {
     let hitpoints = Number(document.getElementById("nav-hitpoint-input").value);
 
     if (shielded) {
         life -= hitpoints * 0.5;
-        status_message(`You were hit and lost ${hitpoints * 0.5} armor.`);
+        statusMessage(`You were hit and lost ${hitpoints * 0.5} armor.`);
         shielded = false;
         document.getElementById("ship-image").src = "assets/img/ship.svg";
     } else {
         life -= hitpoints;
-        status_message(`You were hit and lost ${hitpoints} armor.`);
+        statusMessage(`You were hit and lost ${hitpoints} armor.`);
     }
     showLife();
     if (life <= 0) {

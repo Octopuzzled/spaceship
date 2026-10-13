@@ -36,11 +36,11 @@ function restart() {
     document.getElementById("hit-button").disabled = false;
 }
 
-function error_message(message) {
+function errorMessage(message) {
     terminalOutput.innerHTML += `<p class="terminal__error-message">${message}</p>`;
 }
 
-function status_message(message) {
+function statusMessage(message) {
     terminalOutput.innerHTML += `<p class="terminal__status-message">${message}</p>`;
 }
 
